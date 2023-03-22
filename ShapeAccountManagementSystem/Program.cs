@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
-using ShapeAccountManagementSystem.EntityFramework.Context;
+using ShapeAccountManagementSystem.Extensions;
+using ShapeAccountManagementSystem.Infrastracture.Context;
+using ShapeAccountManagementSystem.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddApplicationServices();
+builder.Services.ConfigureCors(builder.Configuration.GetSection("CORS:Origins")?.Value?.ToString()!);
 builder.Services.AddDbContext<ShapeDbContext>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
@@ -23,9 +26,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("ShapeCorsPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.MapControllers();
 
