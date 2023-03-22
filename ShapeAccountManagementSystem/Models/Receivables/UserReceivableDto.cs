@@ -2,7 +2,7 @@
 
 namespace ShapeAccountManagementSystem.Models.Receivables
 {
-    public class SignUpReceivableDto
+    public class UserReceivableDto
     {
         [Required(ErrorMessage = "First Name is required")]
         [MaxLength(12, ErrorMessage = "First Name should not exceed more than 12 characters")]
@@ -18,6 +18,8 @@ namespace ShapeAccountManagementSystem.Models.Receivables
 
         [Required(ErrorMessage = "Password is required")]
         [MinLength(12, ErrorMessage = "Password should be atleast 12 characters")]
+        [RegularExpression("(?=^.{6,10}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\\s).*$",
+            ErrorMessage = "Passord Must have Atleast 1 Lower 1 Upper and 1 Special Character")]
         public string Password { get; set; } = string.Empty;
     }
 }
