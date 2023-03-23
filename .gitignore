@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/ShapeAccountManagementSystem/obj/Debug/net7.0/ShapeAccountManagementSystem.assets.cache
+/ShapeAccountManagementSystem/obj/Debug/net7.0/ShapeAccountManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+/.vs/ShapeAccountManagementSystem/v17/.suo
+/ShapeAccountManagementSystem/obj/project.assets.json
+/ShapeAccountManagementSystem/obj/project.nuget.cache
+/ShapeAccountManagementSystem/obj/ShapeAccountManagementSystem.csproj.nuget.dgspec.json
