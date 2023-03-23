@@ -37,17 +37,15 @@ namespace ShapeAccountManagementSystem.Infrastracture.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Hash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Hash")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Password")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 

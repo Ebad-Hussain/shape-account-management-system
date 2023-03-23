@@ -11,8 +11,8 @@ using ShapeAccountManagementSystem.Infrastracture.Context;
 namespace ShapeAccountManagementSystem.Infrastracture.Migrations
 {
     [DbContext(typeof(ShapeDbContext))]
-    [Migration("20230322132226_AddUserTable")]
-    partial class AddUserTable
+    [Migration("20230323064214_AddUsersTable")]
+    partial class AddUsersTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,17 +40,15 @@ namespace ShapeAccountManagementSystem.Infrastracture.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Hash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Hash")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Password")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 
