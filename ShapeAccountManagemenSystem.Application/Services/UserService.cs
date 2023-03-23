@@ -16,18 +16,18 @@ namespace ShapeAccountManagemenSystem.Application.Services
             _repository = repository;
             _mapper = mapper;
         }
-        public async Task<bool> CreateUser(CreateUserReceivableDto user)
+        public async Task<bool> CreateUser(CreateUserReceivableDto userInput)
         {
             #region Check If email already registered or not
-            var isEmailExist = _repository.Find(user => user.Email == user.Email).Result.Any();
+            var isEmailExist = _repository.Find(user => user.Email.Equals(userInput.Email)).Any();
             if (isEmailExist)
                 return false;
             #endregion
 
             #region Insert New User To Database
-            var newUser = _mapper.Map<User>(user);
+            var newUser = _mapper.Map<User>(userInput);
             newUser.Hash = PasswordHashHelper.CreateSalt();
-            newUser.Password = await PasswordHashHelper.Hash(user.Password, newUser.Hash);
+            newUser.Password = await PasswordHashHelper.Hash(userInput.Password, newUser.Hash);
             await _repository.Add(newUser);
             return true;
             #endregion
@@ -35,7 +35,7 @@ namespace ShapeAccountManagemenSystem.Application.Services
 
         public async Task<bool> Login(string name, string password)
         {
-            var user = _repository.Find(user => user.FirstName == name).Result.FirstOrDefault();
+            var user = _repository.Find(user => user.FirstName == name).FirstOrDefault();
             if (user != null)
                 return await PasswordHashHelper.VerifyPassword(password, Convert.ToBase64String(user?.Hash!), Convert.ToBase64String(user?.Password!));
             else 

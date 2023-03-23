@@ -12,8 +12,8 @@ namespace ShapeAccountManagemenSystem.Application.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> expression) => 
-            await _context.Set<TEntity>().Where(expression).ToListAsync();
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> expression) => 
+             _context.Set<TEntity>().Where(expression).AsQueryable();
         public async Task<TEntity?> Get(long id) => await _context.Set<TEntity>().FindAsync(id);
         public async Task<IEnumerable<TEntity>> GetAll() => await _context.Set<TEntity>().AsNoTracking().ToListAsync();
         public async Task Add(TEntity entity)
