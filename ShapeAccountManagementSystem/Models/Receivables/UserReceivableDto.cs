@@ -17,9 +17,9 @@ namespace ShapeAccountManagementSystem.Models.Receivables
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Password is required")]
-        [MinLength(12, ErrorMessage = "Password should be atleast 12 characters")]
-        [RegularExpression("(?=^.{6,10}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\\s).*$",
-            ErrorMessage = "Passord Must have Atleast 1 Lower 1 Upper and 1 Special Character")]
+        [MinLength(8, ErrorMessage = "Password should be atleast 8 characters")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$",
+            ErrorMessage = "Passord Must have Atleast 1 Lowercase, 1 Uppercase, 1 Special Character, 1 number")]
         public string Password { get; set; } = string.Empty;
     }
 }

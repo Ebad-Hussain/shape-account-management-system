@@ -5,7 +5,7 @@
 namespace ShapeAccountManagementSystem.Infrastracture.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserTable : Migration
+    public partial class AddUsersTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,8 +19,8 @@ namespace ShapeAccountManagementSystem.Infrastracture.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Hash = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Hash = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ShapeAccountManagementSystem.Core.Entities;
+using ShapeAccountManagementSystem.Core.Dtos.Receivables;
 using ShapeAccountManagementSystem.Core.Interfaces;
 using ShapeAccountManagementSystem.Models;
 using ShapeAccountManagementSystem.Models.Receivables;
@@ -21,14 +21,22 @@ namespace ShapeAccountManagementSystem.Controllers
             _userService = userService;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<ResponseModel>> SignUp(UserReceivableDto input)
+        [HttpPost("signup", Name = "Signup")]
+        public async Task<ActionResult<ResponseModel>> Signup(UserReceivableDto input)
         {
-            bool result = await _userService.CreateUser(_mapper.Map<User>(input));
-            if (result) return Ok(new ResponseModel(result, (int)HttpStatusCode.OK, true));
+            bool result = await _userService.CreateUser(_mapper.Map<CreateUserReceivableDto>(input));
+            if (result) return Ok(new ResponseModel(result, (int)HttpStatusCode.OK, true, "User registered successfuly"));
             else return BadRequest(new ResponseModel
                 (result, (int)HttpStatusCode.BadRequest, false, "Email is already registered"));
         }
 
+        [HttpPost("login", Name ="Login")]
+        public async Task<ActionResult<ResponseModel>> Login(LoginReceivableDto login)
+        {
+            bool result = await _userService.Login(login.UserName, login.Password);
+            if (result) return Ok(new ResponseModel(result, (int)HttpStatusCode.OK, true, "Login successful"));
+            else return Unauthorized(new ResponseModel
+                (result, (int)HttpStatusCode.BadRequest, false, "Invalid credentials"));
+        }
     }
 }

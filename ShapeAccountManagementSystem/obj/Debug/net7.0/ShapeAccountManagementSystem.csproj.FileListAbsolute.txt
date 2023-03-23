@@ -82,3 +82,5 @@ C:\Users\Hp\source\repos\ShapeAccountManagementSystem\ShapeAccountManagementSyst
 C:\Users\Hp\source\repos\ShapeAccountManagementSystem\ShapeAccountManagementSystem\bin\Debug\net7.0\ShapeAccountManagemenSystem.Application.pdb
 C:\Users\Hp\source\repos\ShapeAccountManagementSystem\ShapeAccountManagementSystem\bin\Debug\net7.0\ShapeAccountManagementSystem.Core.pdb
 C:\Users\Hp\source\repos\ShapeAccountManagementSystem\ShapeAccountManagementSystem\bin\Debug\net7.0\ShapeAccountManagementSystem.Infrastracture.pdb
+C:\Users\Hp\source\repos\ShapeAccountManagementSystem\ShapeAccountManagementSystem\bin\Debug\net7.0\Konscious.Security.Cryptography.Argon2.dll
+C:\Users\Hp\source\repos\ShapeAccountManagementSystem\ShapeAccountManagementSystem\bin\Debug\net7.0\Konscious.Security.Cryptography.Blake2.dll

@@ -1,4 +1,5 @@
-﻿using ShapeAccountManagemenSystem.Application.Repositories;
+﻿using ShapeAccountManagemenSystem.Application.Helpers;
+using ShapeAccountManagemenSystem.Application.Repositories;
 using ShapeAccountManagemenSystem.Application.Services;
 using ShapeAccountManagementSystem.Core.Interfaces;
 using ShapeAccountManagementSystem.Helpers;
@@ -12,6 +13,7 @@ namespace ShapeAccountManagementSystem.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddAutoMapper(typeof(MapperProfile));
+            services.AddAutoMapper(typeof(ApplicationMapperProfile));
             return services;
         }
         public static void ConfigureCors(this IServiceCollection services, string origins)
