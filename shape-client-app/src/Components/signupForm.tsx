@@ -17,7 +17,6 @@ export const SignupForm = () => {
     setIsLoading(true);
     const result: ResponseModel = await signupReq('signup', data);
     setIsLoading(false);
-    debugger
     if(result.isSuccess)
         message.success(result.message);
     else
