@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShapeAccountManagementSystem.Infrastracture.Context;
 
@@ -10,9 +11,11 @@ using ShapeAccountManagementSystem.Infrastracture.Context;
 namespace ShapeAccountManagementSystem.Infrastracture.Migrations
 {
     [DbContext(typeof(ShapeDbContext))]
-    partial class ShapeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230323134425_ReorderUsertable")]
+    partial class ReorderUsertable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

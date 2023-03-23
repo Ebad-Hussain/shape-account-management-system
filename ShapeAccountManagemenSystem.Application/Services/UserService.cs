@@ -26,8 +26,8 @@ namespace ShapeAccountManagemenSystem.Application.Services
 
             #region Insert New User To Database
             var newUser = _mapper.Map<User>(userInput);
-            newUser.Hash = PasswordHashHelper.CreateSalt();
-            newUser.Password = await PasswordHashHelper.Hash(userInput.Password, newUser.Hash);
+            newUser.Salt = PasswordHashHelper.CreateSalt();
+            newUser.PasswordHash = await PasswordHashHelper.Hash(userInput.Password, newUser.Salt);
             await _repository.Add(newUser);
             return true;
             #endregion
@@ -37,7 +37,7 @@ namespace ShapeAccountManagemenSystem.Application.Services
         {
             var user = _repository.Find(user => user.FirstName == name).FirstOrDefault();
             if (user != null)
-                return await PasswordHashHelper.VerifyPassword(password, Convert.ToBase64String(user?.Hash!), Convert.ToBase64String(user?.Password!));
+                return await PasswordHashHelper.VerifyPassword(password, Convert.ToBase64String(user?.Salt!), Convert.ToBase64String(user?.PasswordHash!));
             else 
                 return false;
         }

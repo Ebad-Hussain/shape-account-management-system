@@ -8,7 +8,7 @@ namespace ShapeAccountManagemenSystem.Application.Helpers
     {
         public ApplicationMapperProfile()
         {
-            CreateMap<CreateUserReceivableDto, User>().ForMember(model => model.Password, option => option.Ignore());
+            CreateMap<CreateUserReceivableDto, User>().ForMember(model => model.PasswordHash, option => option.Ignore());
         }
     }
 }

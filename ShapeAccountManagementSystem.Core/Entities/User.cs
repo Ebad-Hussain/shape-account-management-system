@@ -6,7 +6,7 @@
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public byte[]? Password { get; set; } 
-        public byte[]? Hash { get; set; } 
+        public byte[]? PasswordHash { get; set; } 
+        public byte[]? Salt { get; set; } 
     }
 }
